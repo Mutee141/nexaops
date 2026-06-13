@@ -19,6 +19,8 @@ def main():
     # Auto-migrate for Render (or any environment) before running the server
     if 'runserver' in sys.argv:
         try:
+            import django
+            django.setup()
             from django.core.management import call_command
             call_command('migrate', interactive=False)
         except Exception as e:
